@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>อ่านค่าตัวต้านทานด้วยการประมวลผลภาพ</title>
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon-16x16.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='selectcolor.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h2 class="logo">อ่านค่าตัวต้านทานด้วยการประมวลผลภาพ</h2>
+                <div class="hamburger" onclick="toggleMenu()">☰</div>
+                <nav class="nav">
+                    <ul class="nav-menu">
+                        <a href="/"><i class="ri-home-6-line"></i> หน้าแรก</a>
+                        <a href="/upload"><i class="ri-image-add-fill"></i> อัพโหลด</a>
+                        <a href="/selectcolor"><i class="ri-calculator-line"></i> เลือกสี</a>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div class="topic">
+        <p>Resistor Calculator</p>
+    </div>
+    <div class="container1">
+        <div id="select-bands" class="resistor-calc-parameter1">
+            <h3 style="margin:0"><label for="dropdown-bands" class="resistor-calc-labels" title="จำนวนแถบ">จำนวนแถบ</label></h3>
+            <!-- ดรอปดาวน์ให้เลือกจำนวนแถบสี (4 หรือ 5 แถบ) -->
+            <select id="dropdown-bands" class="resistor-calc-input" onchange="updateBandOptions(); calculateResistance();">
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+
+        <!-- ตัวเลือกสำหรับตัวต้านทานแบบ 4 แถบ -->
+        <div id="band-options-4" class="band-options">
+            <!-- เลือกแถบที่ 1 -->
+            <div id="select-number1" class="resistor-calc-parameter2">
+                <h3 style="margin:0"><label for="resistor-calc-1st" class="resistor-calc-labels" title="แถบที่ 1">แถบที่ 1</label></h3>
+                <select id="resistor-calc-1st" class="resistor-calc-input" onchange="calculateResistance();">
+                    <option value="">เลือกสี</option>
+                    <option value="0">สีดำ (0)</option>
+                    <option value="1">สีน้ำตาล (1)</option>
+                    <option value="2">สีแดง (2)</option>
+                    <option value="3">สีส้ม (3)</option>
+                    <option value="4">สีเหลือง (4)</option>
+                    <option value="5">สีเขียว (5)</option>
+                    <option value="6">สีน้ำเงิน (6)</option>
+                    <option value="7">สีม่วง (7)</option>
+                    <option value="8">สีเทา (8)</option>
+                    <option value="9">สีขาว (9)</option>
+                </select>
+            </div>
+            <!-- เลือกแถบที่ 2 -->
+            <div id="select-number2" class="resistor-calc-parameter3">
+                <h3 style="margin:0"><label for="resistor-calc-2nd" class="resistor-calc-labels" title="แถบที่ 2">แถบที่ 2</label></h3>
+                <select id="resistor-calc-2nd" class="resistor-calc-input" onchange="calculateResistance();">
+                    <option value="">เลือกสี</option>
+                    <option value="0">สีดำ (0)</option>
+                    <option value="1">สีน้ำตาล (1)</option>
+                    <option value="2">สีแดง (2)</option>
+                    <option value="3">สีส้ม (3)</option>
+                    <option value="4">สีเหลือง (4)</option>
+                    <option value="5">สีเขียว (5)</option>
+                    <option value="6">สีน้ำเงิน (6)</option>
+                    <option value="7">สีม่วง (7)</option>
+                    <option value="8">สีเทา (8)</option>
+                    <option value="9">สีขาว (9)</option>
+                </select>
+            </div>
+            <!-- เลือกแถบที่ 3 (ตัวคูณ) -->
+            <div id="select-multiplier" class="resistor-calc-parameter4">
+                <h3 style="margin:0"><label for="resistor-calc-multiplier" id="lbl-multiplier" class="resistor-calc-labels" title="ตัวคูณ (แถบที่ 3)">แถบที่ 3 (ตัวคูณ)</label></h3>
+                <select id="resistor-calc-multiplier" class="resistor-calc-input" onchange="calculateResistance();">
+                    <option value="">เลือกสี</option>
+                    <option value="0.01">เงิน (0.01 Ω)</option>
+                    <option value="0.1">ทอง (0.1 Ω)</option>
+                    <option value="1">สีดำ (1 Ω)</option>
+                    <option value="10">สีน้ำตาล (10 Ω)</option>
+                    <option value="100">สีแดง (100 Ω)</option>
+                    <option value="1000">สีส้ม (1K Ω)</option>
+                    <option value="10000">สีเหลือง (10K Ω)</option>
+                    <option value="100000">สีเขียว (100K Ω)</option>
+                    <option value="1000000">สีน้ำเงิน (1M Ω)</option>
+                    <option value="10000000">สีม่วง (10M Ω)</option>
+                    <option value="100000000">สีเทา (100M Ω)</option>
+                    <option value="1000000000">สีขาว (1G Ω)</option>
+                </select>
+            </div>
+            <!-- เลือกแถบที่ 4 (ค่าความคลาดเคลื่อน) -->
+            <div id="select-tolerance" class="resistor-calc-parameter5">
+                <h3 style="margin:0"><label for="resistor-calc-tolerance" id="lbl-tolerance" class="resistor-calc-labels" title="ความเผื่อ (แถบที่ 4)">แถบที่ 4 (ค่าความคลาดเคลื่อน)</label></h3>
+                <select id="resistor-calc-tolerance" class="resistor-calc-input" onchange="calculateResistance();">
+                    <option value="">เลือกสี</option>
+                    <option value="10">เงิน (± 10%)</option>
+                    <option value="5">ทอง (± 5%)</option>
+                    <option value="1">สีน้ำตาล (± 1%)</option>
+                    <option value="2">สีแดง (± 2%)</option>
+                    <option value="0.5">สีเขียว (± 0.5%)</option>
+                    <option value="0.25">สีน้ำเงิน (± 0.25%)</option>
+                    <option value="0.1">สีม่วง (± 0.1%)</option>
+                    <option value="0.05">สีเทา (± 0.05%)</option>
+                </select>
+            </div>
+            <!-- แสดงผลค่าความต้านทานที่คำนวณได้ -->
+            <div id="resistor-results" class="resistor-calc-parameter">
+                <label for="resistor-calc-input" class="resistor-calc-labels" title="ค่าตัวต้านทาน">ค่าความต้านทาน</label>
+                <input id="resistor-calc-input" type="text" disabled class="resistor-calc-input calculator-results">
+            </div>
+        </div>
+
+        <!-- ตัวเลือกสำหรับตัวต้านทานแบบ 5 แถบ (ซ่อนอยู่ตอนแรก) -->
+        <div id="band-options-5" class="band-options" style="display: none;">
+            <!-- เลือกแถบที่ 1 -->
+            <div id="select-number1" class="resistor-calc-parameter7">
+                <h3 style="margin:0"><label for="resistor-calc-1st-5" class="resistor-calc-labels" title="แถบที่ 1">แถบที่ 1</label></h3>
+                <select id="resistor-calc-1st-5" class="resistor-calc-input" onchange="calculateResistance();">
+                    <option value="">เลือกสี</option>
+                    <option value="0">สีดำ (0)</option>
+                    <option value="1">สีน้ำตาล (1)</option>
+                    <option value="2">สีแดง (2)</option>
+                    <option value="3">สีส้ม (3)</option>
+                    <option value="4">สีเหลือง (4)</option>
+                    <option value="5">สีเขียว (5)</option>
+                    <option value="6">สีน้ำเงิน (6)</option>
+                    <option value="7">สีม่วง (7)</option>
+                    <option value="8">สีเทา (8)</option>
+                    <option value="9">สีขาว (9)</option>
+                </select>
+            </div>
+            <!-- เลือกแถบที่ 2 -->
+            <div id="select-number4" class="resistor-calc-parameter8">
+                <h3 style="margin:0"><label for="resistor-calc-4th" class="resistor-calc-labels" title="แถบที่ 2">แถบที่ 2</label></h3>
+                <select id="resistor-calc-4th" class="resistor-calc-input" onchange="calculateResistance();">
+                    <option value="">เลือกสี</option>
+                    <option value="0">สีดำ (0)</option>
+                    <option value="1">สีน้ำตาล (1)</option>
+                    <option value="2">สีแดง (2)</option>
+                    <option value="3">สีส้ม (3)</option>
+                    <option value="4">สีเหลือง (4)</option>
+                    <option value="5">สีเขียว (5)</option>
+                    <option value="6">สีน้ำเงิน (6)</option>
+                    <option value="7">สีม่วง (7)</option>
+                    <option value="8">สีเทา (8)</option>
+                    <option value="9">สีขาว (9)</option>
+                </select>
+            </div>
+            <!-- เลือกแถบที่ 3 -->
+            <div id="select-number5" class="resistor-calc-parameter9">
+                <h3 style="margin:0"><label for="resistor-calc-5th" class="resistor-calc-labels" title="แถบที่ 3">แถบที่ 3</label></h3>
+                <select id="resistor-calc-5th" class="resistor-calc-input" onchange="calculateResistance();">
+                    <option value="">เลือกสี</option>
+                    <option value="0">สีดำ (0)</option>
+                    <option value="1">สีน้ำตาล (1)</option>
+                    <option value="2">สีแดง (2)</option>
+                    <option value="3">สีส้ม (3)</option>
+                    <option value="4">สีเหลือง (4)</option>
+                    <option value="5">สีเขียว (5)</option>
+                    <option value="6">สีน้ำเงิน (6)</option>
+                    <option value="7">สีม่วง (7)</option>
+                    <option value="8">สีเทา (8)</option>
+                    <option value="9">สีขาว (9)</option>
+                </select>
+            </div>
+            <!-- เลือกแถบที่ 4 -->
+            <div id="select-multiplier" class="resistor-calc-parameter10">
+                <h3 style="margin:0"><label for="resistor-calc-multiplier5" id="lbl-multiplier5" class="resistor-calc-labels" title="ตัวคูณ (แถบที่ 4)">แถบที่ 4 (ตัวคูณ)</label></h3>
+                <select id="resistor-calc-multiplier5" class="resistor-calc-input" onchange="calculateResistance();">
+                    <option value="">เลือกสี</option>
+                    <option value="0.01">เงิน (0.01 Ω)</option>
+                    <option value="0.1">ทอง (0.1 Ω)</option>
+                    <option value="1">สีดำ (1 Ω)</option>
+                    <option value="10">สีน้ำตาล (10 Ω)</option>
+                    <option value="100">สีแดง (100 Ω)</option>
+                    <option value="1000">สีส้ม (1K Ω)</option>
+                    <option value="10000">สีเหลือง (10K Ω)</option>
+                    <option value="100000">สีเขียว (100K Ω)</option>
+                    <option value="1000000">สีน้ำเงิน (1M Ω)</option>
+                    <option value="10000000">สีม่วง (10M Ω)</option>
+                    <option value="100000000">สีเทา (100M Ω)</option>
+                    <option value="1000000000">สีขาว (1G Ω)</option>
+                </select>
+            </div>
+            <!-- เลือกแถบที่ 5 -->
+            <div id="select-tolerance5" class="resistor-calc-parameter11">
+                <h3 style="margin:0"><label for="resistor-calc-tolerance5" id="lbl-tolerance5" class="resistor-calc-labels" title="ความเผื่อ (แถบที่ 5)">แถบที่ 5 (ค่าความคลาดเคลื่อน)</label></h3>
+                <select id="resistor-calc-tolerance5" class="resistor-calc-input" onchange="calculateResistance();">
+                    <option value="">เลือกสี</option>
+                    <option value="10">เงิน (± 10%)</option>
+                    <option value="5">ทอง (± 5%)</option>
+                    <option value="1">สีน้ำตาล (± 1%)</option>
+                    <option value="2">สีแดง (± 2%)</option>
+                    <option value="0.5">สีเขียว (± 0.5%)</option>
+                    <option value="0.25">สีน้ำเงิน (± 0.25%)</option>
+                    <option value="0.1">สีม่วง (± 0.1%)</option>
+                    <option value="0.05">สีเทา (± 0.05%)</option>
+                </select>
+            </div>
+            <!-- แสดงผลค่าความต้านทานที่คำนวณได้ -->
+            <div id="resistor-results" class="resistor-calc-parameter">
+                <label for="resistor-calc-input5" class="resistor-calc-labels" title="ค่าตัวต้านทาน">ค่าความต้านทาน</label>
+                <input id="resistor-calc-input5" type="text" disabled class="resistor-calc-input calculator-results">
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function formatResistance(value) {
+            let result = '';
+                if (value >= 1e9) {
+                    result = (value / 1e9).toFixed(2) + ' GΩ';
+        } else if (value >= 1e6) {
+                result = (value / 1e6).toFixed(2) + ' MΩ';
+        } else if (value >= 1e3) {
+                result = (value / 1e3).toFixed(2) + ' kΩ';
+        } else {
+                result = value.toFixed(2) + ' Ω';
+        }
+  // ตัด .00 ออกถ้าไม่มีทศนิยมจริง ๆ
+                result = result.replace(/\.00/, '');
+                return result;
+        }
+
+        function toggleMenu() {
+            document.querySelector(".nav-menu").classList.toggle("active");
+        }
+
+        function updateBandOptions() {
+        const bandCount = document.getElementById('dropdown-bands').value;
+
+    // ซ่อนหรือแสดง options
+        document.getElementById('band-options-4').style.display = bandCount === '4' ? 'block' : 'none';
+        document.getElementById('band-options-5').style.display = bandCount === '5' ? 'block' : 'none';
+
+    // เคลียร์ค่า dropdown ทั้งหมด
+        const allSelects = document.querySelectorAll(`#band-options-4 select, #band-options-5 select`);
+        allSelects.forEach(select => {
+            select.selectedIndex = 0; // กลับไปที่ค่า default (index 0)
+        });
+
+    // เคลียร์ค่าผลลัพธ์
+        document.getElementById('resistor-calc-input').value = '';
+        document.getElementById('resistor-calc-input5').value = '';
+        }
+        function calculateResistance() {
+            const bandCount = document.getElementById('dropdown-bands').value;
+            let resistance = 0;
+            let multiplier = 1;
+            let tolerance = 0;
+            let value1, value2, value3;
+
+            if (bandCount === '4') {
+                value1 = parseInt(document.getElementById('resistor-calc-1st').value);
+                value2 = parseInt(document.getElementById('resistor-calc-2nd').value);
+                multiplier = parseFloat(document.getElementById('resistor-calc-multiplier').value);
+                tolerance = parseFloat(document.getElementById('resistor-calc-tolerance').value);
+
+                if (!isNaN(value1) && !isNaN(value2) && !isNaN(multiplier)) {
+                    resistance = (value1 * 10 + value2) * multiplier;
+                    document.getElementById('resistor-calc-input').value =
+                        formatResistance(resistance) + ` ± ${tolerance}%`;
+                } else {
+                    document.getElementById('resistor-calc-input').value = '';
+                }
+            } else if (bandCount === '5') {
+                value1 = parseInt(document.getElementById('resistor-calc-1st-5').value);
+                value2 = parseInt(document.getElementById('resistor-calc-4th').value);
+                value3 = parseInt(document.getElementById('resistor-calc-5th').value);
+                multiplier = parseFloat(document.getElementById('resistor-calc-multiplier5').value);
+                tolerance = parseFloat(document.getElementById('resistor-calc-tolerance5').value);
+
+                if (!isNaN(value1) && !isNaN(value2) && !isNaN(value3) && !isNaN(multiplier)) {
+                    resistance = (value1 * 100 + value2 * 10 + value3) * multiplier;
+                    document.getElementById('resistor-calc-input5').value =
+                        formatResistance(resistance) + ` ± ${tolerance}%`;
+                } else {
+                    document.getElementById('resistor-calc-input5').value = '';
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>

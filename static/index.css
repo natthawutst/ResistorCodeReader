@@ -1,0 +1,383 @@
+/* กำหนดค่าพื้นฐานของ body */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* กำหนดแบบอักษร */
+    margin: 0; /* ลบระยะขอบของ body */
+    padding: 0; /* ลบ padding ของ body */
+    background-color: #f9f9f9; /* กำหนดสีพื้นหลังของหน้าเว็บ */
+    color: #333; /* กำหนดสีตัวอักษร */
+    line-height: 1.6; /* กำหนดระยะห่างระหว่างบรรทัด */
+    padding-top: 90px;
+}
+/* กำหนดขนาดและโครงสร้างของ container */
+.container {
+    width: 100%; /* ให้ container มีความกว้างเต็มจอ */
+    max-width: 1200px; /* กำหนดความกว้างสูงสุดของ container */
+    margin: 0 auto; /* จัดให้อยู่ตรงกลาง */
+    padding: 0 15px; /* กำหนด padding ซ้ายขวา */
+}
+/* ส่วนของ Header */
+.header {
+    display: flex;
+    background: linear-gradient(90deg, rgba(8,81,98,1) 14.5%, rgb(182, 219, 237) 135.4%); /* กำหนดพื้นหลังแบบไล่สี */
+    color: white; /* กำหนดสีของตัวอักษรเป็นสีขาว */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* เพิ่มเงาให้ header */
+    position: fixed; /* ทำให้ header อยู่ด้านบนตลอด */
+    top: 0; /* จัดตำแหน่งให้อยู่ติดบนสุด */
+    left: 0; /* จัดตำแหน่งให้ชิดซ้ายสุด */
+    width: 100%; /* กำหนดความกว้างสูงสุด */
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px 0px;
+    
+}
+/* กำหนดค่าการแสดงผลของรูปภาพใน header */ 
+.header-img img{
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* กำหนดการจัดวางเนื้อหาใน header */
+.header-content {
+    display: flex; /* ใช้ Flexbox เพื่อจัดตำแหน่ง */
+    justify-content: space-between; /* จัดให้อยู่ห่างกันซ้าย-ขวา */
+    align-items: center; /* จัดให้อยู่ตรงกลางแนวตั้ง */
+    height: 60px; /* กำหนดความสูงของ header */
+    width: 100%;
+}
+/* กำหนดค่าของโลโก้ใน header */
+.header .logo {
+    font-size: 22px; /* กำหนดขนาดตัวอักษร */
+    font-weight: bold; /* กำหนดตัวหนา */
+    text-transform: uppercase; /* ทำให้ตัวอักษรเป็นตัวพิมพ์ใหญ่ทั้งหมด */
+    letter-spacing: 1px; /* กำหนดระยะห่างระหว่างตัวอักษร */
+    padding: 10px;
+}
+/* กำหนดสไตล์ของเมนูนำทาง */
+.nav-menu {
+    display: flex; /* ใช้ Flexbox */
+    gap: 20px; /* กำหนดระยะห่างระหว่างเมนู */
+    list-style: none; /* เอาจุดของรายการออก */
+    margin: 0; /* ลบระยะขอบ */
+    padding: 0; /* ลบ padding */
+    transition: transform 0.3s ease-in-out; /* กำหนดเอฟเฟกต์เมื่อมีการเปลี่ยนแปลง */
+    margin-left: auto;
+    font-size: 16px;
+}
+/* สไตล์ของลิงก์ในเมนู */
+.nav-menu a {
+    text-decoration: none; /* ลบขีดเส้นใต้ */
+    color: #ffffff; /* กำหนดสีข้อความเป็นสีขาว */
+    font-weight: 500; /* กำหนดความหนาของตัวอักษร */
+    padding: 10px 15px; /* กำหนดพื้นที่รอบข้อความ */
+    border-radius: 8px; /* กำหนดมุมโค้ง */
+    transition: background 0.3s ease-in-out; /* เพิ่มเอฟเฟกต์การเปลี่ยนสีพื้นหลัง */
+}
+/* เปลี่ยนสีพื้นหลังของเมนูเมื่อ hover */
+.nav-menu a:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+/* กำหนดค่าของเนื้อหาหลัก */
+.main-content {
+    padding: 40px 15px; /* กำหนด padding */
+    margin-top: 5px; /* ปรับระยะห่างจาก header */
+}
+/* กำหนดค่าของกล่องเนื้อหา */
+.theory, .intro, .example {
+    background: white; /* กำหนดสีพื้นหลัง */
+    border-radius: 10px; /* ทำให้มุมโค้ง */
+    padding: 20px; /* กำหนดระยะห่างด้านใน */
+    margin-bottom: 20px; /* กำหนดระยะห่างระหว่างบล็อก */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
+}
+/* จัดรูปแบบของ resistor guide */
+.resistor-guide {
+    display: flex; /* ใช้ Flexbox */
+    justify-content: space-between; /* จัดให้มีช่องว่างระหว่างบล็อก */
+    gap: 20px; /* กำหนดช่องว่างระหว่างบล็อก */
+    margin: 20px 0; /* กำหนดระยะห่างด้านบนและล่าง */
+}
+/* กำหนดค่าของ guide 4-band และ 5-band */
+.guide-4band, .guide-5band {
+    flex: 1; /* ให้แต่ละบล็อกมีขนาดเท่ากัน */
+    background: #DFE0DF; /* กำหนดสีพื้นหลัง */
+    border-radius: 10px; /* ทำให้มุมโค้ง */
+    padding: 15px; /* กำหนด padding */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
+}
+/* กำหนดสีของหัวข้อ */
+.guide-4band h4, .guide-5band h4 {
+    color: #526C75;
+    margin-bottom: 10px;
+}
+/* กำหนดรูปแบบรายการ */
+.guide-4band ul, .guide-5band ul {
+    list-style: disc inside;
+    margin: 0;
+    padding: 0;
+}
+/* กำหนดรูปแบบของรายการย่อย */
+.guide-4band ul li, .guide-5band ul li {
+    margin-bottom: 8px;
+}
+/* กำหนดขนาดหัวข้อ */
+h2{
+    font-size: 25px;
+}
+h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+h4 {
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+/* กำหนดรูปแบบของรายการ */
+ul {
+    list-style: disc inside;
+    margin: 10px 0;
+    padding: 0;
+    font-size: 16px;
+}
+ul li {
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+/* กำหนดรูปแบบของย่อหน้า */
+p {
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+/* กำหนดรูปแบบของภาพตัวต้านทาน */
+.resistor-img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+}
+/* กำหนดรูปแบบของภาพตัวอย่าง */
+.example-img {
+    max-width: 190px;
+    height: auto;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+/* กำหนดรูปแบบของ footer */
+.footer {
+    background: #526C75;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 0;
+}
+/* กำหนดรูปแบบข้อความใน footer */
+.footer p {
+    margin: 0;
+    font-size: 1rem;
+}
+.hamburger {
+    display: none;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
+}
+.hamburger:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 1024px) {
+    .header .logo {
+        font-size: 18px; /* ปรับขนาดตัวอักษรของโลโก้ให้เล็กลง */
+        font-weight: bold;
+        margin-right: auto;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding: 0;
+        margin: 0;
+    }
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px; /* ป้องกันเมนูทับ header */
+        left: 0;
+        width: 100%;
+        background: rgba(8, 81, 98, 0.95);
+        text-align: center;
+        padding: 20px 0;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        gap: 15px;
+    }
+    .nav-menu.active {
+        display: flex;
+        font-size: 15px;
+    }
+    .hamburger {
+        display: block;
+        margin-left: auto;
+        font-size: 18px;
+    }
+    .container {
+        max-width: 95%;
+        padding: 0 10px;
+    }
+    .example-img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+    .header .logo {
+        font-size: 19px;
+    }
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px; /* ป้องกันเมนูทับ header */
+        left: 0;
+        width: 100%;
+        background: rgba(8, 81, 98, 0.95);
+        text-align: center;
+        padding: 20px 0;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        gap: 15px;
+    }
+    .nav-menu.active {
+        display: flex;
+        font-size: 14px;
+    }
+    .hamburger {
+        display: block;
+        margin-left: auto;
+        font-size: 18px;
+    }
+    .example-img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    ul{
+        font-size: 13px;
+    }
+    h3{
+        font-size: 15px;
+    }
+    h4{
+        font-size: 15px;
+    }
+    ul li{
+        font-size: 13px;
+    }
+}
+@media (min-width: 480px) and (max-width: 767px) {
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px; /* ป้องกันเมนูทับ header */
+        left: 0;
+        width: 100%;
+        background: rgba(8, 81, 98, 0.95);
+        text-align: center;
+        padding: 20px 0;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        gap: 15px;
+    }
+    .nav-menu.active {
+        display: flex;
+        font-size: 12px;
+    }
+    .hamburger {
+        display: block;
+        margin-left: auto;
+        font-size: 18px;
+    }
+    .example-img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    ul{
+        font-size: 13px;
+    }
+    .header .logo {
+        font-size: 17px;
+        font-weight: bold;
+        margin-right: auto;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding: 0;
+        margin: 0;
+    }
+    h3{
+        font-size: 15px;
+    }
+    h4{
+        font-size: 15px;
+    }
+    ul li{
+        font-size: 12px;
+    }
+}
+@media (max-width: 479px) {
+    .header .logo {
+        font-size: 13px;
+        padding: 0;
+        margin: 0;
+    }
+    .nav-menu { 
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px; /* ป้องกันเมนูทับ header */
+        left: 0;
+        width: 100%;
+        background: rgba(8, 81, 98, 0.95);
+        text-align: center;
+        padding: 20px 0;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        gap: 10px;
+    }
+    .nav-menu.active {
+        display: flex;
+        font-size: 12px;
+    }
+    .example-img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 115px;
+    }
+    .hamburger {
+        display: block;
+        font-size: 14px;
+    }
+    ul{
+        font-size: 11px;
+    }
+    h3{
+        font-size: 12px;
+    }
+    h4{
+        font-size: 12px;
+    }
+    ul li{
+        font-size: 11px;
+    }
+    .footer p{
+        font-size: 12px;
+    }
+}

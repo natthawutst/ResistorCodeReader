@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>อัพโหลดภาพตัวต้านทาน</title>
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon-16x16.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='upload.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h2 class="logo">อ่านค่าตัวต้านทานด้วยการประมวลผลภาพ</h2>
+                <div class="hamburger" onclick="toggleMenu()">☰</div>
+                <nav class="nav">
+                    <ul class="nav-menu">
+                        <a href="/"><i class="ri-home-6-line"></i> หน้าแรก</a>
+                        <a href="/upload"><i class="ri-image-add-fill"></i> อัพโหลด</a>
+                        <a href="/selectcolor"><i class="ri-calculator-line"></i> เลือกสี</a>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div class="data">
+        <p>Upload resistor image</p>
+    </div>
+    <div class="B3">
+        <form id="uploadForm">
+        <form action="/" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" id="file" accept="image/*" capture="environment">
+            <br>
+            <input type="submit" value="Upload">
+        </form>
+        
+    </div>
+
+    <div id="results" class="image-container"></div>
+    <script>
+        const uploadForm = document.getElementById('uploadForm');
+        const resultsContainer = document.getElementById('results');
+
+        uploadForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const fileInput = document.getElementById('file');
+            const formData = new FormData();
+            formData.append('file', fileInput.files[0]);
+
+            try {
+                const response = await fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const results = await response.json();
+                resultsContainer.innerHTML = '';
+
+                if (Array.isArray(results)) {
+                    results.forEach(result => {
+                        const resultDiv = document.createElement('div');
+                        resultDiv.classList.add('image-box');
+                        resultDiv.innerHTML = `
+                            <p>Bands: ${result.bands.join(', ')}</p>
+                            <p>Resistance: ${result.resistance}</p>
+                            <img src="data:image/jpeg;base64,${result.resistor}" alt="Resistor">
+                            <img src="data:image/jpeg;base64,${result.annotated}" alt="Annotated Resistor">
+                        `;
+                        resultsContainer.appendChild(resultDiv);
+                    });
+                } else {
+                    resultsContainer.textContent = results.error || 'Error occurred';
+                }
+            } catch (error) {
+                resultsContainer.textContent = 'Error uploading file.';
+            }
+        });
+        function toggleMenu() {
+            document.querySelector(".nav-menu").classList.toggle("active");
+        }
+        
+    </script>
+
+</body>
+</html>

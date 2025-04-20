@@ -1,0 +1,113 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>อ่านค่าตัวต้านทานด้วยการประมวลผลภาพ</title> 
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon-16x16.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/> <!-- ลิงก์ไอคอนจาก Remix Icon -->
+</head>
+<body> 
+    <header class="header"> <!-- ส่วนหัวของเว็บไซต์ -->
+        <div class="container"> <!-- กล่องที่ใช้จัดระเบียบเนื้อหา -->
+            <div class="header-content"> <!-- เนื้อหาภายในส่วนหัว -->
+                <h2 class="logo">อ่านค่าตัวต้านทานด้วยการประมวลผลภาพ</h2> 
+                <div class="hamburger" onclick="toggleMenu()">☰</div>
+                <nav class="nav"> <!-- เมนูนำทาง -->
+                    <ul class="nav-menu">
+                        <a href="/"><i class="ri-home-6-line"></i> หน้าแรก</a>
+                        <a href="/upload"><i class="ri-image-add-fill"></i> อัพโหลด</a>
+                        <a href="/selectcolor"><i class="ri-calculator-line"></i> เลือกสี</a>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div class="header-img">
+        <img src="{{ url_for('static', filename='img/Resistor3.png') }}" alt="ภาพตัวอย่างตัวต้านทาน">
+    </div> 
+
+    <main class="main-content"> <!-- ส่วนเนื้อหาหลัก -->
+        <section class="theory"> <!-- ส่วนเนื้อหาที่เกี่ยวกับทฤษฎีตัวต้านทาน -->
+            <div class="container"> <!-- กล่องจัดระเบียบเนื้อหา -->
+                <h3>ตัวต้านทาน</h3> 
+                <ul> 
+                    ตัวต้านทาน (Resistor) เป็นอุปกรณ์ไฟฟ้าชนิดหนึ่งที่มีคุณสมบัติในการต้านการไหลผ่านของกระแสไฟฟ้า ทำด้วยลวดต้านทานหรือถ่านคาร์บอน
+                    เป็นอุปกรณ์ไฟฟ้าชนิดหนึ่งที่มีคุณสมบัติในการต้านการไหลผ่านของกระแสไฟฟ้า นั่นคือ ถ้าอุปกรณ์นั้นมีความต้านทานมาก กระแสไฟฟ้าที่ไหลผ่านจะน้อยลง
+                    เป็นอุปกรณ์ไฟฟ้าชนิดพาสซีฟสองขั้ว ที่สร้างความต่างศักย์ไฟฟ้าคร่อมขั้วทั้งสอง (V) โดยมีสัดส่วนมากน้อยตามปริมาณกระแสไฟฟ้าที่ไหลผ่าน (I)
+                    อัตราส่วนระหว่างความต่างศักย์ และปริมาณกระแสไฟฟ้า ก็คือ ค่าความต้านทานทางไฟฟ้า
+                </ul>
+                <h4>หน่วยวัด</h4> 
+                <ul> 
+                    <li>โอห์ม (Ω): หน่วยของความต้านทาน</li>
+                    <li>มิลลิโอห์ม (mΩ): หน่วยย่อยของโอห์ม</li>
+                    <li>กิโลโอห์ม (kΩ): หน่วยที่ใช้สำหรับค่าความต้านทานสูง</li>
+                    <li>เมกะโอห์ม (MΩ): หน่วยที่ใช้สำหรับค่าความต้านทานสูงมาก</li>
+                </ul>
+                <h4>ทฤษฎีการทำงาน</h4> 
+                <ul>ตัวต้านทานทำงานตามกฎของโอห์ม ซึ่งระบุว่า :</ul> <!-- อธิบายกฎของโอห์ม -->
+                <ul><code>V = I × R</code></ul> <!-- สูตรทางคณิตศาสตร์ -->
+                <ul>โดยที่ <code>V</code> คือแรงดันไฟฟ้า, <code>I</code> คือกระแสไฟฟ้า, และ <code>R</code> คือค่าความต้านทาน</ul> <!-- อธิบายตัวแปรในสูตร -->
+                <ul>การต่อของตัวต้านทานมีสองประเภทหลัก:</ul> <!-- ประเภทการต่อ -->
+                <ul>
+                    <li>การต่ออนุกรม: ความต้านทานรวม <code>R<sub>eq</sub> = R<sub>1</sub> + R<sub>2</sub> + ⋯ + R<sub>n</sub></code></li> <!-- สูตรการต่ออนุกรม -->
+                    <li>การต่อขนาน: ความต้านทานรวม <code>1 / R<sub>eq</sub> = 1 / R<sub>1</sub> + 1 / R<sub>2</sub> + ⋯ + 1 / R<sub>n</sub></code></li> <!-- สูตรการต่อขนาน -->
+                </ul>
+                <ul>พลังงานที่กระจายผ่านตัวต้านทานสามารถคำนวณได้ด้วยสูตร:</ul> <!-- สูตรการคำนวณพลังงาน -->
+                <ul><code>P = I<sup>2</sup> × R = V<sup>2</sup> / R</code></ul> <!-- สูตรพลังงาน -->
+            </div>
+        </section>
+        <section class="intro"> <!-- ส่วนวิธีการอ่านค่าสี -->
+            <div class="container">
+                <h3>วิธีการอ่านค่าสีตัวต้านทาน</h3> 
+                <img src="{{ url_for('static', filename='img/R1.png') }}" alt="แถบสีตัวต้านทาน" class="resistor-img"> 
+                <div class="resistor-guide">
+                    <div class="guide-4band"> <!-- คำแนะนำสำหรับตัวต้านทานแบบ 4 สี -->
+                        <h4>สำหรับแบบ 4 Band (หรือ 4 สี)</h4> 
+                        <ul>
+                            <li>แถบสีที่ 1 เป็นค่าตำแหน่งที่ 1</li> 
+                            <li>แถบสีที่ 2 เป็นค่าตำแหน่งที่ 2</li> 
+                            <li>แถบสีที่ 3 เป็นตัวคูณ</li> 
+                            <li>แถบสีที่ 4 เป็นค่าความผิดพลาดของตัวต้านทาน</li> 
+                        </ul>
+                    </div>
+                    <div class="guide-5band"> <!-- คำแนะนำสำหรับตัวต้านทานแบบ 5 สี -->
+                        <h4>สำหรับแบบ 5 Band (หรือ 5 สี)</h4> <!-- หัวข้อ -->
+                        <ul>
+                            <li>แถบสีที่ 1 เป็นค่าตำแหน่งที่ 1</li> 
+                            <li>แถบสีที่ 2 เป็นค่าตำแหน่งที่ 2</li> 
+                            <li>แถบสีที่ 3 เป็นค่าตำแหน่งที่ 3</li> 
+                            <li>แถบสีที่ 4 เป็นตัวคูณ</li> 
+                            <li>แถบสีที่ 5 เป็นค่าความผิดพลาดของตัวต้านทาน</li> 
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="example"> <!-- ส่วนตัวอย่างการอ่านค่า -->
+            <div class="container">
+                <h3>ตัวอย่างการอ่านค่า</h3> 
+                <img src="{{ url_for('static', filename='img/R3.png') }}" alt="ตัวอย่างตัวต้านทาน" class="example-img"> 
+                <ul>
+                    แถบสีที่ 1 สีน้ำตาล มีค่าเท่ากับ เลข 1 <br> 
+                    แถบสีที่ 2 สีดำ มีค่าเท่ากับ เลข 0 <br> 
+                    แถบสีที่ 3 สีส้ม มีค่ากับตัวคูณ 1kΩ <br> 
+                    แถบสีที่ 4 สีทอง มีค่าเท่ากับค่าความผิดพลาด บวกลบ 5% <br> 
+                    อ่านได้ว่า 10 * 1kΩ = 10kΩ ค่าความผิดพลาด 5% <!-- ผลลัพธ์ -->
+                </ul>
+            </div>
+        </section>
+    </main>
+    <footer class="footer"> <!-- ส่วนท้ายของเว็บไซต์ -->
+        <div class="container">
+            <p>&copy; 2025 อ่านค่าตัวต้านทานด้วยการประมวลผลภาพ</p> <!-- ลิขสิทธิ์ -->
+        </div>
+    </footer>
+    <script>
+        function toggleMenu() {
+            document.querySelector(".nav-menu").classList.toggle("active");
+        }
+    </script>
+</body>
+</html>

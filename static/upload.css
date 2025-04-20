@@ -1,0 +1,368 @@
+/* กำหนดสไตล์ทั่วไปของหน้าเว็บ */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* กำหนดแบบอักษร */
+  margin: 0; /* ลบระยะขอบ */
+  padding: 0; /* ลบระยะห่างภายใน */
+  background-color: #f9f9f9; /* กำหนดสีพื้นหลัง */
+  color: #333; /* กำหนดสีตัวอักษร */
+  line-height: 1.4; /* กำหนดความสูงของบรรทัด */
+  text-align: center; /* จัดข้อความให้อยู่ตรงกลาง */
+}
+.image-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.image-box {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+.image-box img {
+  max-width: 200px;
+  height: auto;
+}
+/* กำหนดขนาดคอนเทนเนอร์หลักของหน้าเว็บ */
+.container {
+  width: 100%; /* กำหนดความกว้าง 90% ของหน้าจอ */
+  max-width: 1200px; /* กำหนดความกว้างสูงสุด */
+  margin: 0 auto; /* จัดให้อยู่กึ่งกลาง */
+  padding: 0 15px; /* เพิ่มระยะห่างด้านใน */
+}
+/* กำหนดสไตล์ของส่วนหัวของเว็บ */
+.header {
+  background: linear-gradient(90deg, rgba(8,81,98,1) 14.5%, rgb(182, 219, 237) 135.4%); /* ทำสีพื้นหลังแบบไล่เฉด */
+  color: white; /* กำหนดสีตัวอักษรเป็นสีขาว */
+  padding: 20px 0; /* กำหนดระยะห่างด้านบนและล่าง */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* เพิ่มเงาใต้ส่วนหัว */
+  width: 100%; /* กำหนดความกว้างสูงสุด */
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px 0px;
+  top: 0; /* จัดตำแหน่งให้อยู่ติดบนสุด */
+  left: 0; /* จัดตำแหน่งให้ชิดซ้ายสุด */
+  
+}
+/* จัดวางเนื้อหาภายใน header */
+.header-content {
+  display: flex; /* ใช้ Flexbox เพื่อจัดตำแหน่ง */
+    justify-content: space-between; /* จัดให้อยู่ห่างกันซ้าย-ขวา */
+    align-items: center; /* จัดให้อยู่ตรงกลางแนวตั้ง */
+    height: 60px; /* กำหนดความสูงของ header */
+    width: 100%;
+}
+/* สไตล์ของโลโก้ */
+.header .logo {
+  font-size: 22px; /* กำหนดขนาดตัวอักษร */
+  font-weight: bold; /* ทำให้ตัวอักษรหนา */
+  text-transform: uppercase; /* เปลี่ยนเป็นตัวพิมพ์ใหญ่ทั้งหมด */
+  letter-spacing: 1px; /* กำหนดระยะห่างระหว่างตัวอักษร */
+  padding: 10px;
+}
+/* เมนูนำทาง */
+.nav-menu {
+  display: flex; /* ใช้ flexbox */
+  gap: 20px; /* กำหนดระยะห่างระหว่างเมนู */
+  list-style: none; /* เอาเครื่องหมายหน้ารายการออก */
+  margin: 0; /* ลบระยะขอบ */
+  padding: 0; /* ลบระยะห่างภายใน */
+  transition: transform 0.3s ease-in-out; /* เพิ่มแอนิเมชัน */
+  margin-left: auto;
+  font-size: 16px;
+}
+/* สไตล์ของลิงก์เมนู */
+.nav-menu a {
+  text-decoration: none; /* ลบขีดเส้นใต้ */
+  color: #ffffff; /* กำหนดสีตัวอักษร */
+  font-weight: 500; /* กำหนดความหนาของตัวอักษร */
+  padding: 10px 15px; /* กำหนดระยะห่างภายใน */
+  border-radius: 8px; /* กำหนดมุมมน */
+  transition: background 0.3s ease-in-out; /* เพิ่มแอนิเมชัน */
+}
+/* สไตล์เมื่อนำเมาส์ไปวางที่เมนู */
+.nav-menu a:hover {
+  background: rgba(0, 0, 0, 0.1); /* เปลี่ยนสีพื้นหลัง */
+}
+/* จัดการสไตล์ของข้อมูล */
+.data {
+  font-size: 16px; /* กำหนดขนาดตัวอักษร */
+  font-weight: bold; /* กำหนดความหนา */
+  justify-content: center; /* จัดให้อยู่กึ่งกลาง */
+  text-align: center; /* จัดให้อยู่กึ่งกลาง */
+  display: flex; /* ใช้ flexbox */
+  flex-direction: column; /* กำหนดให้องค์ประกอบเรียงในแนวตั้ง */
+  margin-bottom: 5px;
+}
+/* สไตล์ของฟอร์ม */
+form {
+  background: #ffffff; /* กำหนดสีพื้นหลัง */
+  padding: 20px; /* กำหนดระยะห่างภายใน */
+  border-radius: 10px; /* กำหนดมุมมน */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
+  display: inline-block; /* กำหนดให้เป็นบล็อคที่อยู่ตรงกลาง */
+  width: 370px; /* กำหนดความกว้างของฟอร์ม */
+  text-align: center; /* จัดข้อความให้อยู่กึ่งกลาง */
+  margin-bottom: 5px; /* กำหนดระยะห่างด้านล่าง */
+  margin-top: 5px;
+}
+/* สไตล์ของช่องอัปโหลดไฟล์ */
+input[type="file"] {
+  margin: 10px 10px; /* กำหนดระยะห่างบน-ล่าง */
+  font-size: 15px;
+}
+/* สไตล์ของปุ่มส่งและปุ่มรีเซ็ต */
+input[type="submit"], .reset-button {
+  background-color: #4CAF50; /* กำหนดสีเขียว */
+  color: white; /* กำหนดสีตัวอักษร */
+  border: none; /* เอาขอบออก */
+  padding: 10px 20px; /* กำหนดระยะห่างภายใน */
+  margin: 10px 5px; /* กำหนดระยะห่าง */
+  cursor: pointer; /* เปลี่ยนเคอร์เซอร์เป็นรูปมือ */
+  border-radius: 8px; /* กำหนดมุมมน */
+  font-size: 13px;
+}
+/* สไตล์ของปุ่มรีเซ็ต */
+.reset-button {
+  background-color: #f44336; /* กำหนดสีแดง */
+}
+/* สไตล์ของปุ่มเมนู */
+.menu-button {
+  background-color: #008CBA; /* กำหนดสีฟ้า */
+  color: white; /* กำหนดสีตัวอักษร */
+  border: none; /* เอาขอบออก */
+  padding: 10px 20px; /* กำหนดระยะห่างภายใน */
+  margin: 10px 5px; /* กำหนดระยะห่าง */
+  cursor: pointer; /* เปลี่ยนเคอร์เซอร์เป็นรูปมือ */
+  border-radius: 5px; /* กำหนดมุมมน */
+  display: inline-block; /* กำหนดให้อยู่ในแนวเดียวกัน */
+}
+ul{
+  list-style: disc inside;
+  margin: 10px 0;
+  padding: 0;
+  font-size: 18px;
+}
+/* ซ่อนเมนูและแสดงไอคอนแฮมเบอร์เกอร์สำหรับมือถือ */
+.hamburger {
+  display: none;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: background 0.3s ease-in-out;
+}
+.hamburger:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+@media screen and (max-width: 1024px) {
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 70px; /* ป้องกันเมนูทับ header */
+    left: 0;
+    width: 100%;
+    background: rgba(8, 81, 98, 0.95);
+    text-align: center;
+    padding: 20px 0;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    gap: 15px;
+}
+.nav-menu.active {
+    display: flex;
+    font-size: 15px;
+}
+.hamburger {
+    display: block;
+    margin-left: auto;
+    font-size: 18px;
+}
+  .container {
+    max-width: 95%; /* ปรับความกว้าง */
+    padding: 0 10px; /* กำหนดระยะห่างภายใน */
+  }
+  .header .logo {
+    font-size: 18px; /* ปรับขนาดโลโก้ */
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0;
+    margin: 0;
+  }
+
+  ul {
+    list-style: disc inside; /* กำหนดรูปแบบรายการ */
+    margin: 10px 0; /* กำหนดระยะห่าง */
+    font-size: 13px; /* กำหนดขนาดตัวอักษร */
+    padding: 0;
+  }
+
+  p {
+    font-size: 20px; /* ปรับขนาดข้อความ */
+  }
+
+  form {
+    width: 330px;
+    height: 100px;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+  }
+
+  input[type="file"] {
+    text-align: center; /* จัดข้อความให้อยู่กึ่งกลาง */
+    justify-content: center; /* จัดเนื้อหาให้อยู่ตรงกลาง */
+    margin: 10px 0; /* กำหนดระยะห่างบนและล่าง */
+    font-size: 14px; /* ปรับขนาดตัวอักษรให้เหมาะสมสำหรับหน้าจอ 1024px */
+}
+/* สไตล์ของปุ่มส่งข้อมูล */
+input[type="submit"] {
+    text-align: center; /* จัดข้อความให้อยู่กึ่งกลาง */
+    justify-content: center; /* จัดปุ่มให้อยู่กึ่งกลาง */
+    padding: 10px 20px; /* กำหนดระยะห่างภายใน */
+    margin: 10px 5px; /* กำหนดระยะห่างรอบๆ ปุ่ม */
+    border-radius: 8px; /* กำหนดมุมมน */
+    font-size: 14px; /* ปรับขนาดตัวอักษรให้เหมาะสมสำหรับหน้าจอ 1024px */
+}
+}
+@media (min-width: 768px) and (max-width: 1023px){
+  .header .logo {
+    font-size: 19px;
+}
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;      
+    top: 70px; /* ป้องกันเมนูทับ header */
+    left: 0;     
+    width: 100%;
+    background: rgba(8, 81, 98, 0.95);
+    text-align: center;
+    padding: 20px 0;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    gap: 15px;
+}
+p {
+  font-size: 16px; /* ปรับขนาดข้อความ */
+}
+form {
+  width: 280px;
+  height: 90px;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+}
+input[type="file"] {
+  font-size: 12px; /* ปรับขนาดตัวอักษรให้เหมาะสมสำหรับหน้าจอ 1024px */
+}
+
+/* สไตล์ของปุ่มส่งข้อมูล */
+input[type="submit"] {
+  font-size: 12px; /* ปรับขนาดตัวอักษรให้เหมาะสมสำหรับหน้าจอ 1024px */
+}
+.nav-menu.active {
+    display: flex;
+    font-size: 14px;
+}
+.hamburger {
+    display: block;
+    margin-left: auto;
+    font-size: 18px;
+}
+}
+
+@media (min-width: 480px) and (max-width: 767px){
+  .header .logo {
+    font-size: 17px;
+    padding: 0;
+    margin: 0;
+}
+  .nav-menu {
+    display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px; /* ป้องกันเมนูทับ header */
+        left: 0;
+        width: 100%;
+        background: rgba(8, 81, 98, 0.95);
+        text-align: center;
+        padding: 20px 0;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        gap: 15px;
+}
+p {
+  font-size: 14px; /* ปรับขนาดข้อความ */
+}
+form {
+  width: 280px;
+  height: 90px;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+}
+input[type="file"] {
+  font-size: 12px; /* ปรับขนาดตัวอักษรให้เหมาะสมสำหรับหน้าจอ 1024px */
+}
+
+/* สไตล์ของปุ่มส่งข้อมูล */
+input[type="submit"] {
+  font-size: 12px; /* ปรับขนาดตัวอักษรให้เหมาะสมสำหรับหน้าจอ 1024px */
+}
+.nav-menu.active {
+    display: flex;
+    font-size: 12px;
+}
+.hamburger {
+    display: block;
+    margin-left: auto;
+    font-size: 18px;
+}
+}
+@media (max-width: 479px) {
+  .header .logo {
+    font-size: 13px;
+    padding: 0;
+    margin: 0;
+}
+  .nav-menu {
+    display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px; /* ป้องกันเมนูทับ header */
+        left: 0;
+        width: 100%;
+        background: rgba(8, 81, 98, 0.95);
+        text-align: center;
+        padding: 20px 0;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        gap: 10px;
+}
+p {
+  font-size: 13px; /* ปรับขนาดข้อความ */
+}
+form {
+  width: 230px;
+  height: 80px;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+}
+input[type="file"] {
+  font-size: 12px; /* ปรับขนาดตัวอักษรให้เหมาะสมสำหรับหน้าจอ 1024px */
+}
+
+/* สไตล์ของปุ่มส่งข้อมูล */
+input[type="submit"] {
+  font-size: 12px; /* ปรับขนาดตัวอักษรให้เหมาะสมสำหรับหน้าจอ 1024px */
+}
+.nav-menu.active {
+    display: flex;
+    font-size: 12px;
+}
+.hamburger {
+    display: block;
+    margin-left: auto;
+    font-size: 14px;
+}
+}
